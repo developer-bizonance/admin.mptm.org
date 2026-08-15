@@ -110,6 +110,21 @@ export default function LoginPage() {
                 <p className="text-xs sm:text-sm text-[#A3AED0] font-semibold tracking-normal mt-1.5">
                   Use your Login Credentials
                 </p>
+                <a
+                  href="https://bizonance.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs font-medium text-slate-400 hover:text-blue-600 transition mt-2 group"
+                >
+                  <span>Developed by</span>
+                  <Image
+                    src="/bizonance.png"
+                    alt="Bizonance Logo"
+                    width={100}
+                    height={28}
+                    className="h-4 w-auto object-contain inline-block group-hover:scale-105 transition-transform"
+                  />
+                </a>
               </div>
             </div>
 
