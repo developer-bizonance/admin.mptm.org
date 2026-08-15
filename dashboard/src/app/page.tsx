@@ -369,7 +369,7 @@ export default function DashboardHome() {
                   जय संताजी
                 </span>
                 <span className="text-slate-900 font-extrabold text-sm sm:text-base tracking-tight">
-                  महाराष्ट्र प्रांतिक तैलिका महासभा
+                  महाराष्ट्र प्रांतिक तैलिक महासभा
                 </span>
                 <span className="text-amber-700 font-medium text-[11px]">
                   अमरावती विभाग, अमरावती
@@ -741,7 +741,7 @@ export default function DashboardHome() {
                   सदस्य नोंदणी डेटा
                 </h1>
                 <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
-                  महाराष्ट्र प्रांतिक तैलिका महासभा - अमरावती विभाग (सर्व सदस्य नोंदणी फॉर्म डेटा)
+                  महाराष्ट्र प्रांतिक तैलिक महासभा - अमरावती विभाग (सर्व सदस्य नोंदणी फॉर्म डेटा)
                 </p>
               </div>
 
@@ -1235,7 +1235,7 @@ export default function DashboardHome() {
                             ❖ जय संताजी ❖
                           </p>
                           <h2 className="text-xl sm:text-2xl font-black tracking-wide drop-shadow-md" style={{ color: "#FDE68A" }}>
-                            महाराष्ट्र प्रांतिक तैलिका महासभा
+                            महाराष्ट्र प्रांतिक तैलिक महासभा
                           </h2>
                           <p className="text-xs sm:text-sm font-bold" style={{ color: "#BAE6FD" }}>
                             अमरावती विभाग, अमरावती
