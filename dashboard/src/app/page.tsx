@@ -635,37 +635,7 @@ export default function DashboardHome() {
                   </div>
                 </div>
 
-                {/* 2. एकूण जमा शुल्क */}
-                <div className="bg-white rounded-xl p-4 border border-slate-200/80 shadow-2xs flex items-center gap-4 hover:shadow-md transition">
-                  <div className="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0">
-                    <IndianRupee className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <span className="text-xs font-semibold text-slate-500 block">
-                      एकूण जमा शुल्क
-                    </span>
-                    <span className="text-2xl font-extrabold text-slate-900 leading-tight">
-                      ₹{stats.totalFees.toLocaleString("en-IN")}
-                    </span>
-                  </div>
-                </div>
-
-                {/* 3. रोख (Cash) देयक अर्ज */}
-                <div className="bg-white rounded-xl p-4 border border-slate-200/80 shadow-2xs flex items-center gap-4 hover:shadow-md transition">
-                  <div className="w-12 h-12 rounded-xl bg-pink-100 text-pink-600 flex items-center justify-center shrink-0">
-                    <CreditCard className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <span className="text-xs font-semibold text-slate-500 block">
-                      रोख (Cash) देयक अर्ज
-                    </span>
-                    <span className="text-2xl font-extrabold text-slate-900 leading-tight">
-                      {stats.cashCount}
-                    </span>
-                  </div>
-                </div>
-
-                {/* 4. ऑनलाइन/UPI देयक अर्ज */}
+                {/* 2. ऑनलाइन/UPI देयक अर्ज (Upper Row) */}
                 <div className="bg-white rounded-xl p-4 border border-slate-200/80 shadow-2xs flex items-center gap-4 hover:shadow-md transition">
                   <div className="w-12 h-12 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center shrink-0">
                     <Smartphone className="w-6 h-6" />
@@ -680,7 +650,37 @@ export default function DashboardHome() {
                   </div>
                 </div>
 
-                {/* 5. रोख जमा शुल्क */}
+                {/* 3. रोख (Cash) देयक अर्ज (Upper Row) */}
+                <div className="bg-white rounded-xl p-4 border border-slate-200/80 shadow-2xs flex items-center gap-4 hover:shadow-md transition">
+                  <div className="w-12 h-12 rounded-xl bg-pink-100 text-pink-600 flex items-center justify-center shrink-0">
+                    <CreditCard className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <span className="text-xs font-semibold text-slate-500 block">
+                      रोख (Cash) देयक अर्ज
+                    </span>
+                    <span className="text-2xl font-extrabold text-slate-900 leading-tight">
+                      {stats.cashCount}
+                    </span>
+                  </div>
+                </div>
+
+                {/* 4. एकूण जमा शुल्क (Down Row) */}
+                <div className="bg-white rounded-xl p-4 border border-slate-200/80 shadow-2xs flex items-center gap-4 hover:shadow-md transition">
+                  <div className="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0">
+                    <IndianRupee className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <span className="text-xs font-semibold text-slate-500 block">
+                      एकूण जमा शुल्क
+                    </span>
+                    <span className="text-2xl font-extrabold text-slate-900 leading-tight">
+                      ₹{stats.totalFees.toLocaleString("en-IN")}
+                    </span>
+                  </div>
+                </div>
+
+                {/* 5. रोख जमा शुल्क (Down Row) */}
                 <div className="bg-white rounded-xl p-4 border border-slate-200/80 shadow-2xs flex items-center gap-4 hover:shadow-md transition">
                   <div className="w-12 h-12 rounded-xl bg-red-100 text-red-600 flex items-center justify-center shrink-0">
                     <Banknote className="w-6 h-6" />
@@ -695,7 +695,7 @@ export default function DashboardHome() {
                   </div>
                 </div>
 
-                {/* 6. ऑनलाइन/UPI जमा शुल्क */}
+                {/* 6. ऑनलाइन/UPI जमा शुल्क (Down Row) */}
                 <div className="bg-white rounded-xl p-4 border border-slate-200/80 shadow-2xs flex items-center gap-4 hover:shadow-md transition">
                   <div className="w-12 h-12 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center shrink-0">
                     <QrCode className="w-6 h-6" />
