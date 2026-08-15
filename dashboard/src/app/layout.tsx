@@ -17,7 +17,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://admin-mptm-org.vercel.app";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "महाराष्ट्र प्रांतिक तैलिक महासभा-अमरावती विभाग, अमरावती | Admin Dashboard",
   description: "महाराष्ट्र प्रांतिक तैलिक महासभा - अमरावती विभाग (अमरावती) अधिकृत प्रशासक डॅशबोर्ड. सर्व सदस्य नोंदणी फॉर्म डेटा, शुल्क संकलन व अहवाल व्यवस्थापन.",
   keywords: [
@@ -39,6 +42,14 @@ export const metadata: Metadata = {
     title: "महाराष्ट्र प्रांतिक तैलिक महासभा-अमरावती विभाग, अमरावती | Admin Dashboard",
     description: "महाराष्ट्र प्रांतिक तैलिक महासभा - अमरावती विभाग अधिकृत प्रशासक डॅशबोर्ड",
     siteName: "MPTM Amravati Admin Dashboard",
+    images: [
+      {
+        url: `${siteUrl}/bizonancelogo.png`,
+        width: 500,
+        height: 500,
+        alt: "MPTM Amravati Admin Dashboard",
+      },
+    ],
   },
 };
 
@@ -52,6 +63,13 @@ export default function RootLayout({
       lang="mr"
       className={`${jakarta.variable} ${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/favicon.ico" />
+        <meta property="og:image" content={`${siteUrl}/bizonancelogo.png`} />
+        <meta property="og:image:secure_url" content={`${siteUrl}/bizonancelogo.png`} />
+      </head>
       <body className="min-h-full flex flex-col font-sans">{children}</body>
     </html>
   );
