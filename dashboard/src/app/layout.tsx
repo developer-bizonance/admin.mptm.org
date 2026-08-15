@@ -40,9 +40,12 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "MPTM Amravati" }],
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
-    apple: "/mptm.png",
+    icon: [
+      { url: "/favicon.png", type: "image/png" },
+      { url: "/favicon.ico" },
+    ],
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
   },
   openGraph: {
     title: "महाराष्ट्र प्रांतिक तैलिक महासभा-अमरावती विभाग, अमरावती | Admin Dashboard",
@@ -50,7 +53,7 @@ export const metadata: Metadata = {
     siteName: "MPTM Amravati Admin Dashboard",
     images: [
       {
-        url: `${siteUrl}/mptm.png`,
+        url: `${siteUrl}/favicon.png`,
         width: 800,
         height: 800,
         alt: "MPTM Amravati Logo",
@@ -61,7 +64,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "महाराष्ट्र प्रांतिक तैलिक महासभा-अमरावती विभाग | Admin Dashboard",
     description: "महाराष्ट्र प्रांतिक तैलिक महासभा - अमरावती विभाग अधिकृत प्रशासक डॅशबोर्ड",
-    images: [`${siteUrl}/mptm.png`],
+    images: [`${siteUrl}/favicon.png`],
   },
 };
 
@@ -76,11 +79,14 @@ export default function RootLayout({
       className={`${jakarta.variable} ${geistSans.variable} ${geistMono.variable} ${devanagari.variable} h-full antialiased`}
     >
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="shortcut icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/mptm.png" />
-        <meta property="og:image" content={`${siteUrl}/mptm.png`} />
-        <meta property="og:image:secure_url" content={`${siteUrl}/mptm.png`} />
+        <link rel="icon" href="/favicon.png" type="image/png" />
+        <link rel="shortcut icon" href="/favicon.png" />
+        <link rel="apple-touch-icon" href="/favicon.png" />
+        <meta property="og:image" content={`${siteUrl}/favicon.png`} />
+        <meta property="og:image:secure_url" content={`${siteUrl}/favicon.png`} />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="800" />
       </head>
       <body className={`${devanagari.className} min-h-full flex flex-col font-sans`}>{children}</body>
     </html>
