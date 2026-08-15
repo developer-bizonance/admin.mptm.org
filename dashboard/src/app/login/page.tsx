@@ -114,15 +114,13 @@ export default function LoginPage() {
                   href="https://bizonance.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs font-medium text-slate-400 hover:text-blue-600 transition mt-2 group"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-blue-600 transition mt-2 group"
                 >
                   <span>Developed by</span>
-                  <Image
+                  <img
                     src="/bizonance.png"
                     alt="Bizonance Logo"
-                    width={100}
-                    height={28}
-                    className="h-4 w-auto object-contain inline-block group-hover:scale-105 transition-transform"
+                    className="h-4 sm:h-5 w-auto object-contain inline-block group-hover:scale-105 transition-transform"
                   />
                 </a>
               </div>
