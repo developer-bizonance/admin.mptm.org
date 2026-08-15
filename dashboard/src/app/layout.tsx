@@ -1,0 +1,58 @@
+import type { Metadata } from "next";
+import { Plus_Jakarta_Sans, Geist, Geist_Mono } from "next/font/google";
+import "./globals.css";
+
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-jakarta",
+});
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+export const metadata: Metadata = {
+  title: "महाराष्ट्र प्रांतिक तैलिका महासभा-अमरावती विभाग, अमरावती | Admin Dashboard",
+  description: "महाराष्ट्र प्रांतिक तैलिका महासभा - अमरावती विभाग (अमरावती) अधिकृत प्रशासक डॅशबोर्ड. सर्व सदस्य नोंदणी फॉर्म डेटा, शुल्क संकलन व अहवाल व्यवस्थापन.",
+  keywords: [
+    "महाराष्ट्र प्रांतिक तैलिका महासभा",
+    "अमरावती विभाग",
+    "अमरावती",
+    "तैलिका महासभा नोंदणी",
+    "जय संताजी",
+    "Admin Dashboard",
+    "Member Registration",
+  ],
+  authors: [{ name: "MPTM Amravati" }],
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
+  },
+  openGraph: {
+    title: "महाराष्ट्र प्रांतिक तैलिका महासभा-अमरावती विभाग, अमरावती | Admin Dashboard",
+    description: "महाराष्ट्र प्रांतिक तैलिका महासभा - अमरावती विभाग अधिकृत प्रशासक डॅशबोर्ड",
+    siteName: "MPTM Amravati Admin Dashboard",
+  },
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html
+      lang="mr"
+      className={`${jakarta.variable} ${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+    >
+      <body className="min-h-full flex flex-col font-sans">{children}</body>
+    </html>
+  );
+}
