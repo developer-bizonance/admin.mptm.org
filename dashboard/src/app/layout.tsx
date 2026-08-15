@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Geist, Geist_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans, Geist, Geist_Mono, Noto_Sans_Devanagari } from "next/font/google";
 import "./globals.css";
 
 const jakarta = Plus_Jakarta_Sans({
@@ -15,6 +15,12 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+const devanagari = Noto_Sans_Devanagari({
+  variable: "--font-devanagari",
+  subsets: ["devanagari", "latin"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://admin-mptm-org.vercel.app";
@@ -61,7 +67,7 @@ export default function RootLayout({
   return (
     <html
       lang="mr"
-      className={`${jakarta.variable} ${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${jakarta.variable} ${geistSans.variable} ${geistMono.variable} ${devanagari.variable} h-full antialiased`}
     >
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -70,7 +76,7 @@ export default function RootLayout({
         <meta property="og:image" content={`${siteUrl}/bizonancelogo.png`} />
         <meta property="og:image:secure_url" content={`${siteUrl}/bizonancelogo.png`} />
       </head>
-      <body className="min-h-full flex flex-col font-sans">{children}</body>
+      <body className={`${devanagari.className} min-h-full flex flex-col font-sans`}>{children}</body>
     </html>
   );
 }
