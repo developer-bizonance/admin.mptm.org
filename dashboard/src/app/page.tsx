@@ -1231,10 +1231,10 @@ export default function DashboardHome() {
                         </div>
 
                         <div className="text-center mx-auto space-y-0.5">
-                          <p className="text-xs sm:text-sm font-bold tracking-wider" style={{ color: "#FBBF24" }}>
+                          <p className="text-xs sm:text-sm font-bold" style={{ color: "#FBBF24" }}>
                             ❖ जय संताजी ❖
                           </p>
-                          <h2 className="text-xl sm:text-2xl font-black tracking-wide drop-shadow-md" style={{ color: "#FDE68A" }}>
+                          <h2 className="text-xl sm:text-2xl font-black drop-shadow-md" style={{ color: "#FDE68A" }}>
                             महाराष्ट्र प्रांतिक तैलिक महासभा
                           </h2>
                           <p className="text-xs sm:text-sm font-bold" style={{ color: "#BAE6FD" }}>
