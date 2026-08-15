@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
-    apple: "/favicon.ico",
+    apple: "/mptm.png",
   },
   openGraph: {
     title: "महाराष्ट्र प्रांतिक तैलिक महासभा-अमरावती विभाग, अमरावती | Admin Dashboard",
@@ -50,12 +50,18 @@ export const metadata: Metadata = {
     siteName: "MPTM Amravati Admin Dashboard",
     images: [
       {
-        url: `${siteUrl}/bizonancelogo.png`,
-        width: 500,
-        height: 500,
-        alt: "MPTM Amravati Admin Dashboard",
+        url: `${siteUrl}/mptm.png`,
+        width: 800,
+        height: 800,
+        alt: "MPTM Amravati Logo",
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "महाराष्ट्र प्रांतिक तैलिक महासभा-अमरावती विभाग | Admin Dashboard",
+    description: "महाराष्ट्र प्रांतिक तैलिक महासभा - अमरावती विभाग अधिकृत प्रशासक डॅशबोर्ड",
+    images: [`${siteUrl}/mptm.png`],
   },
 };
 
@@ -72,9 +78,9 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="shortcut icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/favicon.ico" />
-        <meta property="og:image" content={`${siteUrl}/bizonancelogo.png`} />
-        <meta property="og:image:secure_url" content={`${siteUrl}/bizonancelogo.png`} />
+        <link rel="apple-touch-icon" href="/mptm.png" />
+        <meta property="og:image" content={`${siteUrl}/mptm.png`} />
+        <meta property="og:image:secure_url" content={`${siteUrl}/mptm.png`} />
       </head>
       <body className={`${devanagari.className} min-h-full flex flex-col font-sans`}>{children}</body>
     </html>
