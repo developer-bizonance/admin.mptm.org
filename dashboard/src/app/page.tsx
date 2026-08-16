@@ -38,6 +38,8 @@ import {
   Banknote,
   QrCode,
   Lock,
+  Trash2,
+  AlertTriangle,
 } from "lucide-react";
 
 interface FamilyMember {
@@ -93,6 +95,9 @@ export default function DashboardHome() {
   const [paymentFilter, setPaymentFilter] = useState<string>("ALL");
   
   const [selectedReg, setSelectedReg] = useState<MemberRegistration | null>(null);
+  const [deleteConfirmReg, setDeleteConfirmReg] = useState<MemberRegistration | null>(null);
+  const [isDeleting, setIsDeleting] = useState<boolean>(false);
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [screenshotZoom, setScreenshotZoom] = useState<string | null>(null);
   const [isRefreshing, setIsRefreshing] = useState<boolean>(false);
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(true);
@@ -105,6 +110,35 @@ export default function DashboardHome() {
   const profileRef = useRef<HTMLDivElement>(null);
   const notificationRef = useRef<HTMLDivElement>(null);
   const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+
+  const handleDeleteRegistration = async (id: string) => {
+    if (!id) return;
+    try {
+      setIsDeleting(true);
+      const res = await fetch(`${API_URL}/api/register/${id}`, {
+        method: "DELETE",
+      });
+
+      const data = await res.json();
+
+      if (res.ok && data.success) {
+        setRegistrations((prev) => prev.filter((r) => r.id !== id));
+        if (selectedReg?.id === id) {
+          setSelectedReg(null);
+        }
+        setDeleteConfirmReg(null);
+        setToastMessage("अर्ज यशस्वीरित्या डेटाबेसमधून हटवला गेला.");
+        setTimeout(() => setToastMessage(null), 4000);
+      } else {
+        alert(data.error || "अर्ज हटवताना त्रुटी झाली!");
+      }
+    } catch (err: any) {
+      console.error("Delete registration error:", err);
+      alert("सर्व्हरशी संपर्क होऊ शकला नाही. हटवता आले नाही.");
+    } finally {
+      setIsDeleting(false);
+    }
+  };
 
   // Check login session on mount: if not logged in, redirect to /login
   useEffect(() => {
@@ -953,13 +987,25 @@ export default function DashboardHome() {
 
                               {/* Action Buttons */}
                               <td className="py-3 px-4 align-top text-right">
-                                <button
-                                  onClick={() => setSelectedReg(reg)}
-                                  className="inline-flex items-center gap-1 bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 px-2.5 py-1 rounded-lg text-xs font-bold transition shadow-2xs"
-                                >
-                                  <Eye className="w-3.5 h-3.5 text-amber-700" />
-                                  <span>सविस्तर</span>
-                                </button>
+                                <div className="flex items-center justify-end gap-1.5">
+                                  <button
+                                    onClick={() => setSelectedReg(reg)}
+                                    className="inline-flex items-center gap-1 bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 px-2.5 py-1 rounded-lg text-xs font-bold transition shadow-2xs"
+                                    title="सविस्तर पावती पहा"
+                                  >
+                                    <Eye className="w-3.5 h-3.5 text-amber-700" />
+                                    <span>सविस्तर</span>
+                                  </button>
+
+                                  <button
+                                    onClick={() => setDeleteConfirmReg(reg)}
+                                    className="inline-flex items-center gap-1 bg-red-50 hover:bg-red-100 text-red-700 border border-red-200 px-2 py-1 rounded-lg text-xs font-bold transition shadow-2xs"
+                                    title="अर्ज हटवा"
+                                  >
+                                    <Trash2 className="w-3.5 h-3.5 text-red-600" />
+                                    <span>हटवा</span>
+                                  </button>
+                                </div>
                               </td>
                             </tr>
                           );
