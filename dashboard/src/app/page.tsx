@@ -988,25 +988,25 @@ export default function DashboardHome() {
                                 </span>
                               </td>
 
-                              {/* Action Buttons */}
+                              {/* Action Buttons: ONLY Eye Icon Button & Delete Icon Button */}
                               <td className="py-3 px-4 align-top text-right">
-                                <div className="flex items-center justify-end gap-1.5">
+                                <div className="flex items-center justify-end gap-2">
+                                  {/* Eye Icon Button */}
                                   <button
                                     onClick={() => setSelectedReg(reg)}
-                                    className="inline-flex items-center gap-1 bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 px-2.5 py-1 rounded-lg text-xs font-bold transition shadow-2xs"
-                                    title="सविस्तर पावती पहा"
+                                    className="w-8 h-8 rounded-lg bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-300 flex items-center justify-center transition shadow-2xs active:scale-95"
+                                    title="सविस्तर पावती पहा (View Receipt)"
                                   >
-                                    <Eye className="w-3.5 h-3.5 text-amber-700" />
-                                    <span>सविस्तर</span>
+                                    <Eye className="w-4 h-4 text-amber-700" />
                                   </button>
 
+                                  {/* Delete Icon Button */}
                                   <button
                                     onClick={() => setDeleteConfirmReg(reg)}
-                                    className="inline-flex items-center gap-1 bg-red-50 hover:bg-red-100 text-red-700 border border-red-200 px-2 py-1 rounded-lg text-xs font-bold transition shadow-2xs"
-                                    title="अर्ज हटवा"
+                                    className="w-8 h-8 rounded-lg bg-red-50 hover:bg-red-100 text-red-700 border border-red-200 flex items-center justify-center transition shadow-2xs active:scale-95"
+                                    title="अर्ज हटवा (Delete Registration)"
                                   >
-                                    <Trash2 className="w-3.5 h-3.5 text-red-600" />
-                                    <span>हटवा</span>
+                                    <Trash2 className="w-4 h-4 text-red-600" />
                                   </button>
                                 </div>
                               </td>
