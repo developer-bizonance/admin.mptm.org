@@ -115,13 +115,31 @@ export default function DashboardHome() {
     if (!id) return;
     try {
       setIsDeleting(true);
-      const res = await fetch(`${API_URL}/api/register/${id}`, {
+      let res = await fetch(`${API_URL}/api/register/${id}`, {
         method: "DELETE",
+        headers: { "Content-Type": "application/json" },
       });
 
-      const data = await res.json();
+      let data;
+      try {
+        data = await res.json();
+      } catch {
+        data = null;
+      }
 
-      if (res.ok && data.success) {
+      // If DELETE method failed or preflight issue occurred, try POST fallback
+      if (!res.ok || !data?.success) {
+        const fallbackRes = await fetch(`${API_URL}/api/register/delete/${id}`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+        });
+        data = await fallbackRes.json();
+        if (fallbackRes.ok && data.success) {
+          res = fallbackRes;
+        }
+      }
+
+      if (data && data.success) {
         setRegistrations((prev) => prev.filter((r) => r.id !== id));
         if (selectedReg?.id === id) {
           setSelectedReg(null);
@@ -130,7 +148,7 @@ export default function DashboardHome() {
         setToastMessage("अर्ज यशस्वीरित्या डेटाबेसमधून हटवला गेला.");
         setTimeout(() => setToastMessage(null), 4000);
       } else {
-        alert(data.error || "अर्ज हटवताना त्रुटी झाली!");
+        alert(data?.error || "अर्ज हटवताना त्रुटी झाली!");
       }
     } catch (err: any) {
       console.error("Delete registration error:", err);
