@@ -1244,6 +1244,98 @@ export default function DashboardHome() {
         </div>
       )}
 
+      {/* DELETE CONFIRMATION POPUP MODAL */}
+      {deleteConfirmReg && (
+        <div className="fixed inset-0 z-[100] bg-black/75 backdrop-blur-xs flex items-center justify-center p-4 animate-in fade-in duration-200 no-print">
+          <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 border border-red-200 overflow-hidden my-auto animate-in zoom-in-95 duration-200 text-left font-sans">
+            <div className="w-14 h-14 rounded-full bg-red-100 text-red-600 flex items-center justify-center mb-4 mx-auto sm:mx-0">
+              <Trash2 className="w-7 h-7 text-red-600" />
+            </div>
+
+            <h3 className="text-lg sm:text-xl font-extrabold text-slate-900 leading-snug">
+              Do you really want to delete this receipt?
+            </h3>
+            <p className="text-xs font-bold text-slate-500 mt-1">
+              पावती हटवण्याची खात्री करा? (Receipt No: <span className="font-mono text-slate-900 font-extrabold">{deleteConfirmReg.receiptNo}</span>)
+            </p>
+
+            {/* Receipt Summary Info */}
+            <div className="mt-4 p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5 text-xs text-slate-800">
+              <p className="flex items-center justify-between">
+                <span className="text-slate-600">पावती क्र. (Receipt No):</span>
+                <span className="font-mono font-bold text-slate-900">{deleteConfirmReg.receiptNo}</span>
+              </p>
+              <p className="flex items-center justify-between">
+                <span className="text-slate-600">मुख्य सदस्य (Member Name):</span>
+                <span className="font-bold text-slate-900">{deleteConfirmReg.mainMembers[0]?.fullName || "N/A"}</span>
+              </p>
+              <p className="flex items-center justify-between">
+                <span className="text-slate-600">मोबाईल क्र. (Mobile):</span>
+                <span className="font-mono font-bold text-slate-800">{deleteConfirmReg.mainMembers[0]?.mobileNo || "N/A"}</span>
+              </p>
+              <p className="flex items-center justify-between">
+                <span className="text-slate-600">जमा शुल्क (Fee Amount):</span>
+                <span className="font-extrabold text-emerald-700">₹{deleteConfirmReg.registrationFee}</span>
+              </p>
+            </div>
+
+            {/* Warning Alert */}
+            <div className="mt-3.5 p-3 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs font-semibold flex items-start gap-2">
+              <AlertTriangle className="w-4 h-4 text-red-600 shrink-0 mt-0.5" />
+              <div>
+                <p className="font-extrabold text-red-800">Warning / सूचना:</p>
+                <p className="mt-0.5">These changes cannot be undone! (हे बदल पूर्ववत केले जाऊ शकत नाहीत!)</p>
+              </div>
+            </div>
+
+            {/* Action Buttons: Cancel and Delete */}
+            <div className="mt-6 flex items-center justify-end gap-3">
+              <button
+                type="button"
+                onClick={() => setDeleteConfirmReg(null)}
+                disabled={isDeleting}
+                className="px-5 py-2.5 bg-slate-200 hover:bg-slate-300 text-slate-800 text-xs font-extrabold rounded-xl transition cursor-pointer"
+              >
+                Cancel (रद्द करा)
+              </button>
+
+              <button
+                type="button"
+                onClick={() => handleDeleteRegistration(deleteConfirmReg.id)}
+                disabled={isDeleting}
+                className="px-6 py-2.5 bg-red-600 hover:bg-red-700 text-white text-xs font-extrabold rounded-xl shadow-md transition flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
+              >
+                {isDeleting ? (
+                  <>
+                    <RefreshCw className="w-3.5 h-3.5 animate-spin" />
+                    <span>Deleting...</span>
+                  </>
+                ) : (
+                  <>
+                    <Trash2 className="w-4 h-4" />
+                    <span>Delete (हटवा)</span>
+                  </>
+                )}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* TOAST SUCCESS NOTIFICATION */}
+      {toastMessage && (
+        <div className="fixed bottom-6 right-6 z-[120] bg-slate-900 text-white px-4 py-3 rounded-xl shadow-2xl border border-slate-700 flex items-center gap-3 animate-in slide-in-from-bottom-5 duration-200">
+          <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
+          <span className="text-xs font-bold">{toastMessage}</span>
+          <button
+            onClick={() => setToastMessage(null)}
+            className="ml-2 text-slate-400 hover:text-white"
+          >
+            <X className="w-4 h-4" />
+          </button>
+        </div>
+      )}
+
       {/* Screenshot Zoom Modal */}
       {screenshotZoom && (
         <div className="fixed inset-0 z-60 bg-black/80 flex items-center justify-center p-4 no-print">
