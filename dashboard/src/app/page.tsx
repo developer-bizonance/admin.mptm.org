@@ -870,7 +870,8 @@ export default function DashboardHome() {
                     <table className="w-full text-left border-collapse">
                       <thead>
                         <tr className="bg-slate-50 border-b border-slate-200 text-xs font-bold text-slate-600 uppercase tracking-wider">
-                          <th className="py-3 px-4">पावती क्र. व दिनांक</th>
+                          <th className="py-3 px-4">दिनांक (Date)</th>
+                          <th className="py-3 px-4">पावती क्रमांक</th>
                           <th className="py-3 px-4">मुख्य सदस्य</th>
                           <th className="py-3 px-4">संपर्क व पत्ता</th>
                           <th className="py-3 px-4">प्रभाग क्र.</th>
@@ -893,17 +894,19 @@ export default function DashboardHome() {
                               key={reg.id}
                               className="hover:bg-blue-50/30 transition duration-150 group"
                             >
-                              {/* Receipt & Date */}
-                              <td className="py-3 px-4 align-top">
-                                <div className="flex flex-col">
-                                  <span className="font-bold text-blue-900 font-mono text-xs bg-blue-50 border border-blue-200 px-2 py-0.5 rounded w-max">
-                                    {reg.receiptNo}
-                                  </span>
-                                  <span className="text-[11px] text-slate-500 flex items-center gap-1 mt-1">
-                                    <Calendar className="w-3 h-3 text-slate-400" />
-                                    {reg.date}
-                                  </span>
-                                </div>
+                              {/* 1. Date (Starting Column) */}
+                              <td className="py-3 px-4 align-top whitespace-nowrap">
+                                <span className="text-xs font-semibold text-slate-700 flex items-center gap-1.5 bg-slate-100/90 px-2 py-1 rounded border border-slate-200/90 w-max">
+                                  <Calendar className="w-3.5 h-3.5 text-amber-600 shrink-0" />
+                                  {reg.date}
+                                </span>
+                              </td>
+
+                              {/* 2. Receipt No. */}
+                              <td className="py-3 px-4 align-top whitespace-nowrap">
+                                <span className="font-bold text-blue-900 font-mono text-xs bg-blue-50 border border-blue-200 px-2 py-0.5 rounded inline-block">
+                                  {reg.receiptNo}
+                                </span>
                               </td>
 
                               {/* Main Member Info */}
